@@ -12,7 +12,7 @@ defmodule Ordos.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: [],
+    [applications: [:locker],
      mod: {Ordos, []}]
   end
 
@@ -26,6 +26,8 @@ defmodule Ordos.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    []
+    [
+      {:locker, github: "wooga/locker"}
+    ]
   end
 end
