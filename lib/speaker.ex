@@ -1,5 +1,6 @@
 alias Ordos.Message, as: Message
 
+
 defmodule Ordos.Speaker do
 	@response_timeout	:timer.seconds(5)
 	@life_timeout		:timer.seconds(60)
@@ -9,8 +10,11 @@ defmodule Ordos.Speaker do
 			message_channel(msg, %{})
 		end
 	end
-	defp update_lock(msg) do
-		:ok
+	defp update_lock(msg = %Message{req_id: req_id}) do
+		case :locker.lock(req_id, self) do
+			{:ok, _, _, _} -> :ok
+			{:error, _} -> :error
+		end
 	end
 	defp do_send(data, state = %{pids: pids}) do
 		for pid <- pids, do: send(data, pid)
