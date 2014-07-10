@@ -8,26 +8,18 @@ defmodule Ordos.Mixfile do
      deps: deps]
   end
 
-  # Configuration for the OTP application
-  #
-  # Type `mix help compile.app` for more information
   def application do
-    [applications: [:locker],
+    [applications: [:exlager, :exactor, :locker, :elli],
      mod: {Ordos, []}]
   end
 
-  # Dependencies can be hex.pm packages:
-  #
-  #   {:mydep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1"}
-  #
-  # Type `mix help deps` for more examples and options
   defp deps do
     [
-      {:locker, github: "wooga/locker"}
+      {:locker, github: "wooga/locker"},
+      {:elli, github: "knutin/elli"},
+      {:exactor, github: "sasa1977/exactor"},
+      {:lager, github: "quasiconvex/lager", override: true},
+      {:exlager, github: "khia/exlager"}
     ]
   end
 end
