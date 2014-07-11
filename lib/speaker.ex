@@ -50,15 +50,15 @@ defmodule Ordos.Speaker do
 			{:subscribe, pid} -> 
 				case Map.get(state, :response) do
 					nil -> 
-						Lager.notice("#{inspect req_id} :: no data, subscribing")
+						#Lager.notice("#{inspect req_id} :: no data, subscribing")
 						message_channel(msg, put_in(state, [:pids], ([pid | Map.get(state, :pids, [])])))
 					data -> 
-						Lager.notice("#{inspect req_id} :: got data, returing")
+						#Lager.notice("#{inspect req_id} :: got data, returing")
 						send(pid, {:ok, data})
 						message_channel(msg, state)
 				end
 			{:response, data} -> 
-				Lager.notice("#{inspect req_id} :: recived data response, now only serving data")
+				#Lager.notice("#{inspect req_id} :: recived data response, now only serving data")
 				:locker.update(req_id, self, data, @life_timeout)
 				do_send(data, state)
 				message_channel(msg, put_in(state, [:response], data))
