@@ -6,7 +6,7 @@ defmodule Ordos do
 
     children = [
       worker(:locker, [1]),
-      worker(:elli, [[port: 3000, callback: Ordos.HTTP]]),
+      # worker(:elli, [[port: 3000, callback: Ordos.HTTP]]),
       worker(Ordos.Worker, [])
     ]
 
