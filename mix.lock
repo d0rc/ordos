@@ -2,6 +2,7 @@
   "exactor": {:git, "git://github.com/sasa1977/exactor.git", "65a2cef190d2bd654d08c6f9ea49c8533bc432f6", []},
   "exlager": {:git, "git://github.com/khia/exlager.git", "99eb3fb763ae546edfe2ac3dd181987a4872dfcc", []},
   "goldrush": {:git, "git://github.com/DeadZen/goldrush.git", "71e63212f12c25827e0c1b4198d37d5d018a7fec", [tag: "0.1.6"]},
+  "jiffy": {:git, "git://github.com/davisp/jiffy.git", "99867af6e9bfec6bb80b10524d4dc27e39150dee", []},
   "lager": {:git, "git://github.com/quasiconvex/lager.git", "081c6de29f725a0fbae343f4749957429b55efc1", []},
   "locker": {:git, "git://github.com/wooga/locker.git", "42fc50432b05997068b648f23ad22e76626efa32", []},
   "proper": {:git, "https://github.com/manopapad/proper.git", "87e4a56e8f97f1972cde44ed30500daa4641595f", [tag: "v1.1"]}}

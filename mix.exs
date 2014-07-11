@@ -9,7 +9,7 @@ defmodule Ordos.Mixfile do
   end
 
   def application do
-    [applications: [:exlager, :exactor, :locker, :elli],
+    [applications: [:jiffy, :exlager, :exactor, :locker, :elli],
      mod: {Ordos, []}]
   end
 
@@ -19,6 +19,7 @@ defmodule Ordos.Mixfile do
       {:elli, github: "knutin/elli"},
       {:exactor, github: "sasa1977/exactor"},
       {:lager, github: "quasiconvex/lager", override: true},
+      {:jiffy, github: "davisp/jiffy"},
       {:exlager, github: "khia/exlager"}
     ]
   end
