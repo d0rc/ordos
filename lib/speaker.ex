@@ -4,6 +4,7 @@ alias Ordos.Message, as: Message
 defmodule Ordos.Speaker do
 	require Lager
 	@life_timeout		:timer.seconds(60)
+	@wait_timeout		:timer.seconds(90)
 
 	defp do_send(data, state = %{pids: pids}) do
 		for pid <- pids, do: send(pid, {:ok, data})
@@ -17,7 +18,7 @@ defmodule Ordos.Speaker do
 		end
 		receive do
 			msg -> msg
-		after @life_timeout -> 
+		after @wait_timeout -> 
 			{:error, :timeout}
 		end
 	end
@@ -60,9 +61,9 @@ defmodule Ordos.Speaker do
 				Lager.notice("#{inspect req_id} :: recived data response, now only serving data")
 				:locker.update(req_id, self, data, @life_timeout)
 				do_send(data, state)
-				:erlang.send_after(@life_timeout, self(), :timeout_life)
 				message_channel(msg, put_in(state, [:response], data))
-			:timeout_life -> :ok
+			:timeout_life -> 
+				{:error, :timeout}
 		end
 	end
 end
